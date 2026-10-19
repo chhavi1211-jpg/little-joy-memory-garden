@@ -10,6 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ComfortRouteImport } from './routes/comfort'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as RitualRouteImport } from './routes/ritual'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SupportRouteImport } from './routes/support'
 import { Route as CalmIndexRouteImport } from './routes/calm.index'
 import { Route as CalmBoxRouteImport } from './routes/calm.box'
 import { Route as CalmQuickRouteImport } from './routes/calm.quick'
@@ -29,6 +35,36 @@ import { Route as PlayPuzzleRouteImport } from './routes/play.puzzle'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComfortRoute = ComfortRouteImport.update({
+  id: '/comfort',
+  path: '/comfort',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RitualRoute = RitualRouteImport.update({
+  id: '/ritual',
+  path: '/ritual',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalmIndexRoute = CalmIndexRouteImport.update({
@@ -109,6 +145,12 @@ const PlayPuzzleRoute = PlayPuzzleRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/comfort': typeof ComfortRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/ritual': typeof RitualRoute
+  '/settings': typeof SettingsRoute
+  '/support': typeof SupportRoute
   '/calm/box': typeof CalmBoxRoute
   '/calm/quick': typeof CalmQuickRoute
   '/calm/relax': typeof CalmRelaxRoute
@@ -127,6 +169,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/comfort': typeof ComfortRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/ritual': typeof RitualRoute
+  '/settings': typeof SettingsRoute
+  '/support': typeof SupportRoute
   '/calm/box': typeof CalmBoxRoute
   '/calm/quick': typeof CalmQuickRoute
   '/calm/relax': typeof CalmRelaxRoute
@@ -146,6 +194,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/comfort': typeof ComfortRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/ritual': typeof RitualRoute
+  '/settings': typeof SettingsRoute
+  '/support': typeof SupportRoute
   '/calm/box': typeof CalmBoxRoute
   '/calm/quick': typeof CalmQuickRoute
   '/calm/relax': typeof CalmRelaxRoute
@@ -166,6 +220,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
+    | '/comfort'
+    | '/reset-password'
+    | '/ritual'
+    | '/settings'
+    | '/support'
     | '/calm/box'
     | '/calm/quick'
     | '/calm/relax'
@@ -184,6 +244,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
+    | '/comfort'
+    | '/reset-password'
+    | '/ritual'
+    | '/settings'
+    | '/support'
     | '/calm/box'
     | '/calm/quick'
     | '/calm/relax'
@@ -202,6 +268,12 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/auth'
+    | '/comfort'
+    | '/reset-password'
+    | '/ritual'
+    | '/settings'
+    | '/support'
     | '/calm/box'
     | '/calm/quick'
     | '/calm/relax'
@@ -221,6 +293,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  ComfortRoute: typeof ComfortRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  RitualRoute: typeof RitualRoute
+  SettingsRoute: typeof SettingsRoute
+  SupportRoute: typeof SupportRoute
   CalmBoxRoute: typeof CalmBoxRoute
   CalmQuickRoute: typeof CalmQuickRoute
   CalmRelaxRoute: typeof CalmRelaxRoute
@@ -245,6 +323,48 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comfort': {
+      id: '/comfort'
+      path: '/comfort'
+      fullPath: '/comfort'
+      preLoaderRoute: typeof ComfortRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ritual': {
+      id: '/ritual'
+      path: '/ritual'
+      fullPath: '/ritual'
+      preLoaderRoute: typeof RitualRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calm/': {
@@ -357,6 +477,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  ComfortRoute: ComfortRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  RitualRoute: RitualRoute,
+  SettingsRoute: SettingsRoute,
+  SupportRoute: SupportRoute,
   CalmBoxRoute: CalmBoxRoute,
   CalmQuickRoute: CalmQuickRoute,
   CalmRelaxRoute: CalmRelaxRoute,
