@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PlayIndexRouteImport } from './routes/play.index'
+import { Route as PlayColourRouteImport } from './routes/play.colour'
+import { Route as PlayFindRouteImport } from './routes/play.find'
+import { Route as PlayMatchRouteImport } from './routes/play.match'
+import { Route as PlayMazeRouteImport } from './routes/play.maze'
+import { Route as PlayPuzzleRouteImport } from './routes/play.puzzle'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlayIndexRoute = PlayIndexRouteImport.update({
+  id: '/play/',
+  path: '/play/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayColourRoute = PlayColourRouteImport.update({
+  id: '/play/colour',
+  path: '/play/colour',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayFindRoute = PlayFindRouteImport.update({
+  id: '/play/find',
+  path: '/play/find',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayMatchRoute = PlayMatchRouteImport.update({
+  id: '/play/match',
+  path: '/play/match',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayMazeRoute = PlayMazeRouteImport.update({
+  id: '/play/maze',
+  path: '/play/maze',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayPuzzleRoute = PlayPuzzleRouteImport.update({
+  id: '/play/puzzle',
+  path: '/play/puzzle',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/play/colour': typeof PlayColourRoute
+  '/play/find': typeof PlayFindRoute
+  '/play/match': typeof PlayMatchRoute
+  '/play/maze': typeof PlayMazeRoute
+  '/play/puzzle': typeof PlayPuzzleRoute
+  '/play/': typeof PlayIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/play/colour': typeof PlayColourRoute
+  '/play/find': typeof PlayFindRoute
+  '/play/match': typeof PlayMatchRoute
+  '/play/maze': typeof PlayMazeRoute
+  '/play/puzzle': typeof PlayPuzzleRoute
+  '/play': typeof PlayIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/play/colour': typeof PlayColourRoute
+  '/play/find': typeof PlayFindRoute
+  '/play/match': typeof PlayMatchRoute
+  '/play/maze': typeof PlayMazeRoute
+  '/play/puzzle': typeof PlayPuzzleRoute
+  '/play/': typeof PlayIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/play/colour'
+    | '/play/find'
+    | '/play/match'
+    | '/play/maze'
+    | '/play/puzzle'
+    | '/play/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/play/colour'
+    | '/play/find'
+    | '/play/match'
+    | '/play/maze'
+    | '/play/puzzle'
+    | '/play'
+  id:
+    | '__root__'
+    | '/'
+    | '/play/colour'
+    | '/play/find'
+    | '/play/match'
+    | '/play/maze'
+    | '/play/puzzle'
+    | '/play/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PlayColourRoute: typeof PlayColourRoute
+  PlayFindRoute: typeof PlayFindRoute
+  PlayMatchRoute: typeof PlayMatchRoute
+  PlayMazeRoute: typeof PlayMazeRoute
+  PlayPuzzleRoute: typeof PlayPuzzleRoute
+  PlayIndexRoute: typeof PlayIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/play/': {
+      id: '/play/'
+      path: '/play'
+      fullPath: '/play/'
+      preLoaderRoute: typeof PlayIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/colour': {
+      id: '/play/colour'
+      path: '/play/colour'
+      fullPath: '/play/colour'
+      preLoaderRoute: typeof PlayColourRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/find': {
+      id: '/play/find'
+      path: '/play/find'
+      fullPath: '/play/find'
+      preLoaderRoute: typeof PlayFindRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/match': {
+      id: '/play/match'
+      path: '/play/match'
+      fullPath: '/play/match'
+      preLoaderRoute: typeof PlayMatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/maze': {
+      id: '/play/maze'
+      path: '/play/maze'
+      fullPath: '/play/maze'
+      preLoaderRoute: typeof PlayMazeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/puzzle': {
+      id: '/play/puzzle'
+      path: '/play/puzzle'
+      fullPath: '/play/puzzle'
+      preLoaderRoute: typeof PlayPuzzleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PlayColourRoute: PlayColourRoute,
+  PlayFindRoute: PlayFindRoute,
+  PlayMatchRoute: PlayMatchRoute,
+  PlayMazeRoute: PlayMazeRoute,
+  PlayPuzzleRoute: PlayPuzzleRoute,
+  PlayIndexRoute: PlayIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
