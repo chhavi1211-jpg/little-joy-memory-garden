@@ -149,7 +149,12 @@ function Maze() {
             )),
           ).map((g) => g)}
           <style>{`line{stroke:var(--color-primary);stroke-width:1.1;stroke-linecap:round}`}</style>
-          <text x={(size - 0.5) * cell} y={(size - 0.5) * cell} fontSize={cell * 0.6} textAnchor="middle" dominantBaseline="central">🌷</text>
+          <g aria-label="Goal flower">
+            {[0, 72, 144, 216, 288].map((a) => (
+              <circle key={a} cx={(size - 0.5) * cell + Math.cos((a * Math.PI) / 180) * cell * 0.18} cy={(size - 0.5) * cell + Math.sin((a * Math.PI) / 180) * cell * 0.18} r={cell * 0.14} fill="var(--color-lavender)" />
+            ))}
+            <circle cx={(size - 0.5) * cell} cy={(size - 0.5) * cell} r={cell * 0.1} fill="var(--color-butter)" />
+          </g>
           <circle
             cx={(pos[0] + 0.5) * cell}
             cy={(pos[1] + 0.5) * cell}
