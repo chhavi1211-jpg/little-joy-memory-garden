@@ -10,33 +10,310 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ComfortRouteImport } from './routes/comfort'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as RitualRouteImport } from './routes/ritual'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SupportRouteImport } from './routes/support'
+import { Route as CalmIndexRouteImport } from './routes/calm.index'
+import { Route as CalmBoxRouteImport } from './routes/calm.box'
+import { Route as CalmQuickRouteImport } from './routes/calm.quick'
+import { Route as CalmRelaxRouteImport } from './routes/calm.relax'
+import { Route as CalmSensesRouteImport } from './routes/calm.senses'
+import { Route as CalmSlowRouteImport } from './routes/calm.slow'
+import { Route as MemoriesIndexRouteImport } from './routes/memories.index'
+import { Route as MemoriesNewRouteImport } from './routes/memories.new'
+import { Route as MemoriesRediscoverRouteImport } from './routes/memories.rediscover'
+import { Route as PlayIndexRouteImport } from './routes/play.index'
+import { Route as PlayColourRouteImport } from './routes/play.colour'
+import { Route as PlayFindRouteImport } from './routes/play.find'
+import { Route as PlayMatchRouteImport } from './routes/play.match'
+import { Route as PlayMazeRouteImport } from './routes/play.maze'
+import { Route as PlayPuzzleRouteImport } from './routes/play.puzzle'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComfortRoute = ComfortRouteImport.update({
+  id: '/comfort',
+  path: '/comfort',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RitualRoute = RitualRouteImport.update({
+  id: '/ritual',
+  path: '/ritual',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmIndexRoute = CalmIndexRouteImport.update({
+  id: '/calm/',
+  path: '/calm/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmBoxRoute = CalmBoxRouteImport.update({
+  id: '/calm/box',
+  path: '/calm/box',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmQuickRoute = CalmQuickRouteImport.update({
+  id: '/calm/quick',
+  path: '/calm/quick',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmRelaxRoute = CalmRelaxRouteImport.update({
+  id: '/calm/relax',
+  path: '/calm/relax',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmSensesRoute = CalmSensesRouteImport.update({
+  id: '/calm/senses',
+  path: '/calm/senses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmSlowRoute = CalmSlowRouteImport.update({
+  id: '/calm/slow',
+  path: '/calm/slow',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoriesIndexRoute = MemoriesIndexRouteImport.update({
+  id: '/memories/',
+  path: '/memories/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoriesNewRoute = MemoriesNewRouteImport.update({
+  id: '/memories/new',
+  path: '/memories/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoriesRediscoverRoute = MemoriesRediscoverRouteImport.update({
+  id: '/memories/rediscover',
+  path: '/memories/rediscover',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayIndexRoute = PlayIndexRouteImport.update({
+  id: '/play/',
+  path: '/play/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayColourRoute = PlayColourRouteImport.update({
+  id: '/play/colour',
+  path: '/play/colour',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayFindRoute = PlayFindRouteImport.update({
+  id: '/play/find',
+  path: '/play/find',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayMatchRoute = PlayMatchRouteImport.update({
+  id: '/play/match',
+  path: '/play/match',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayMazeRoute = PlayMazeRouteImport.update({
+  id: '/play/maze',
+  path: '/play/maze',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayPuzzleRoute = PlayPuzzleRouteImport.update({
+  id: '/play/puzzle',
+  path: '/play/puzzle',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/comfort': typeof ComfortRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/ritual': typeof RitualRoute
+  '/settings': typeof SettingsRoute
+  '/support': typeof SupportRoute
+  '/calm/box': typeof CalmBoxRoute
+  '/calm/quick': typeof CalmQuickRoute
+  '/calm/relax': typeof CalmRelaxRoute
+  '/calm/senses': typeof CalmSensesRoute
+  '/calm/slow': typeof CalmSlowRoute
+  '/memories/new': typeof MemoriesNewRoute
+  '/memories/rediscover': typeof MemoriesRediscoverRoute
+  '/play/colour': typeof PlayColourRoute
+  '/play/find': typeof PlayFindRoute
+  '/play/match': typeof PlayMatchRoute
+  '/play/maze': typeof PlayMazeRoute
+  '/play/puzzle': typeof PlayPuzzleRoute
+  '/calm/': typeof CalmIndexRoute
+  '/memories/': typeof MemoriesIndexRoute
+  '/play/': typeof PlayIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/comfort': typeof ComfortRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/ritual': typeof RitualRoute
+  '/settings': typeof SettingsRoute
+  '/support': typeof SupportRoute
+  '/calm/box': typeof CalmBoxRoute
+  '/calm/quick': typeof CalmQuickRoute
+  '/calm/relax': typeof CalmRelaxRoute
+  '/calm/senses': typeof CalmSensesRoute
+  '/calm/slow': typeof CalmSlowRoute
+  '/memories/new': typeof MemoriesNewRoute
+  '/memories/rediscover': typeof MemoriesRediscoverRoute
+  '/play/colour': typeof PlayColourRoute
+  '/play/find': typeof PlayFindRoute
+  '/play/match': typeof PlayMatchRoute
+  '/play/maze': typeof PlayMazeRoute
+  '/play/puzzle': typeof PlayPuzzleRoute
+  '/calm': typeof CalmIndexRoute
+  '/memories': typeof MemoriesIndexRoute
+  '/play': typeof PlayIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/comfort': typeof ComfortRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/ritual': typeof RitualRoute
+  '/settings': typeof SettingsRoute
+  '/support': typeof SupportRoute
+  '/calm/box': typeof CalmBoxRoute
+  '/calm/quick': typeof CalmQuickRoute
+  '/calm/relax': typeof CalmRelaxRoute
+  '/calm/senses': typeof CalmSensesRoute
+  '/calm/slow': typeof CalmSlowRoute
+  '/memories/new': typeof MemoriesNewRoute
+  '/memories/rediscover': typeof MemoriesRediscoverRoute
+  '/play/colour': typeof PlayColourRoute
+  '/play/find': typeof PlayFindRoute
+  '/play/match': typeof PlayMatchRoute
+  '/play/maze': typeof PlayMazeRoute
+  '/play/puzzle': typeof PlayPuzzleRoute
+  '/calm/': typeof CalmIndexRoute
+  '/memories/': typeof MemoriesIndexRoute
+  '/play/': typeof PlayIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/comfort'
+    | '/reset-password'
+    | '/ritual'
+    | '/settings'
+    | '/support'
+    | '/calm/box'
+    | '/calm/quick'
+    | '/calm/relax'
+    | '/calm/senses'
+    | '/calm/slow'
+    | '/memories/new'
+    | '/memories/rediscover'
+    | '/play/colour'
+    | '/play/find'
+    | '/play/match'
+    | '/play/maze'
+    | '/play/puzzle'
+    | '/calm/'
+    | '/memories/'
+    | '/play/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/comfort'
+    | '/reset-password'
+    | '/ritual'
+    | '/settings'
+    | '/support'
+    | '/calm/box'
+    | '/calm/quick'
+    | '/calm/relax'
+    | '/calm/senses'
+    | '/calm/slow'
+    | '/memories/new'
+    | '/memories/rediscover'
+    | '/play/colour'
+    | '/play/find'
+    | '/play/match'
+    | '/play/maze'
+    | '/play/puzzle'
+    | '/calm'
+    | '/memories'
+    | '/play'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/comfort'
+    | '/reset-password'
+    | '/ritual'
+    | '/settings'
+    | '/support'
+    | '/calm/box'
+    | '/calm/quick'
+    | '/calm/relax'
+    | '/calm/senses'
+    | '/calm/slow'
+    | '/memories/new'
+    | '/memories/rediscover'
+    | '/play/colour'
+    | '/play/find'
+    | '/play/match'
+    | '/play/maze'
+    | '/play/puzzle'
+    | '/calm/'
+    | '/memories/'
+    | '/play/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  ComfortRoute: typeof ComfortRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  RitualRoute: typeof RitualRoute
+  SettingsRoute: typeof SettingsRoute
+  SupportRoute: typeof SupportRoute
+  CalmBoxRoute: typeof CalmBoxRoute
+  CalmQuickRoute: typeof CalmQuickRoute
+  CalmRelaxRoute: typeof CalmRelaxRoute
+  CalmSensesRoute: typeof CalmSensesRoute
+  CalmSlowRoute: typeof CalmSlowRoute
+  MemoriesNewRoute: typeof MemoriesNewRoute
+  MemoriesRediscoverRoute: typeof MemoriesRediscoverRoute
+  PlayColourRoute: typeof PlayColourRoute
+  PlayFindRoute: typeof PlayFindRoute
+  PlayMatchRoute: typeof PlayMatchRoute
+  PlayMazeRoute: typeof PlayMazeRoute
+  PlayPuzzleRoute: typeof PlayPuzzleRoute
+  CalmIndexRoute: typeof CalmIndexRoute
+  MemoriesIndexRoute: typeof MemoriesIndexRoute
+  PlayIndexRoute: typeof PlayIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +325,179 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comfort': {
+      id: '/comfort'
+      path: '/comfort'
+      fullPath: '/comfort'
+      preLoaderRoute: typeof ComfortRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ritual': {
+      id: '/ritual'
+      path: '/ritual'
+      fullPath: '/ritual'
+      preLoaderRoute: typeof RitualRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/': {
+      id: '/calm/'
+      path: '/calm'
+      fullPath: '/calm/'
+      preLoaderRoute: typeof CalmIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/box': {
+      id: '/calm/box'
+      path: '/calm/box'
+      fullPath: '/calm/box'
+      preLoaderRoute: typeof CalmBoxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/quick': {
+      id: '/calm/quick'
+      path: '/calm/quick'
+      fullPath: '/calm/quick'
+      preLoaderRoute: typeof CalmQuickRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/relax': {
+      id: '/calm/relax'
+      path: '/calm/relax'
+      fullPath: '/calm/relax'
+      preLoaderRoute: typeof CalmRelaxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/senses': {
+      id: '/calm/senses'
+      path: '/calm/senses'
+      fullPath: '/calm/senses'
+      preLoaderRoute: typeof CalmSensesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/slow': {
+      id: '/calm/slow'
+      path: '/calm/slow'
+      fullPath: '/calm/slow'
+      preLoaderRoute: typeof CalmSlowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memories/': {
+      id: '/memories/'
+      path: '/memories'
+      fullPath: '/memories/'
+      preLoaderRoute: typeof MemoriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memories/new': {
+      id: '/memories/new'
+      path: '/memories/new'
+      fullPath: '/memories/new'
+      preLoaderRoute: typeof MemoriesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memories/rediscover': {
+      id: '/memories/rediscover'
+      path: '/memories/rediscover'
+      fullPath: '/memories/rediscover'
+      preLoaderRoute: typeof MemoriesRediscoverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/': {
+      id: '/play/'
+      path: '/play'
+      fullPath: '/play/'
+      preLoaderRoute: typeof PlayIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/colour': {
+      id: '/play/colour'
+      path: '/play/colour'
+      fullPath: '/play/colour'
+      preLoaderRoute: typeof PlayColourRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/find': {
+      id: '/play/find'
+      path: '/play/find'
+      fullPath: '/play/find'
+      preLoaderRoute: typeof PlayFindRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/match': {
+      id: '/play/match'
+      path: '/play/match'
+      fullPath: '/play/match'
+      preLoaderRoute: typeof PlayMatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/maze': {
+      id: '/play/maze'
+      path: '/play/maze'
+      fullPath: '/play/maze'
+      preLoaderRoute: typeof PlayMazeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/puzzle': {
+      id: '/play/puzzle'
+      path: '/play/puzzle'
+      fullPath: '/play/puzzle'
+      preLoaderRoute: typeof PlayPuzzleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  ComfortRoute: ComfortRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  RitualRoute: RitualRoute,
+  SettingsRoute: SettingsRoute,
+  SupportRoute: SupportRoute,
+  CalmBoxRoute: CalmBoxRoute,
+  CalmQuickRoute: CalmQuickRoute,
+  CalmRelaxRoute: CalmRelaxRoute,
+  CalmSensesRoute: CalmSensesRoute,
+  CalmSlowRoute: CalmSlowRoute,
+  MemoriesNewRoute: MemoriesNewRoute,
+  MemoriesRediscoverRoute: MemoriesRediscoverRoute,
+  PlayColourRoute: PlayColourRoute,
+  PlayFindRoute: PlayFindRoute,
+  PlayMatchRoute: PlayMatchRoute,
+  PlayMazeRoute: PlayMazeRoute,
+  PlayPuzzleRoute: PlayPuzzleRoute,
+  CalmIndexRoute: CalmIndexRoute,
+  MemoriesIndexRoute: MemoriesIndexRoute,
+  PlayIndexRoute: PlayIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

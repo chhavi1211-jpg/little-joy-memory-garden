@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Architecture rules
+- All user data goes through `src/lib/app-data.tsx` (one provider): guests use localStorage, signed-in users use Cloud tables with owner-only RLS. Why: guest mode and sync share one API.
+- Memories carry a `source` field; future importers (e.g. Google Photos) must add rows via the same provider and require explicit user approval per photo. Why: keeps imports pluggable and consent-driven.
+- Photos live in the private `memories` bucket under `<user_id>/...`, shown via signed URLs; images are downscaled client-side (strips EXIF/GPS). Why: privacy by default.
+- Never surface archived or "avoid" memories anywhere (use `resurfaceable`). Why: core user trust rule.
