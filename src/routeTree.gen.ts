@@ -16,7 +16,9 @@ import { Route as CalmQuickRouteImport } from './routes/calm.quick'
 import { Route as CalmRelaxRouteImport } from './routes/calm.relax'
 import { Route as CalmSensesRouteImport } from './routes/calm.senses'
 import { Route as CalmSlowRouteImport } from './routes/calm.slow'
+import { Route as MemoriesIndexRouteImport } from './routes/memories.index'
 import { Route as MemoriesNewRouteImport } from './routes/memories.new'
+import { Route as MemoriesRediscoverRouteImport } from './routes/memories.rediscover'
 import { Route as PlayIndexRouteImport } from './routes/play.index'
 import { Route as PlayColourRouteImport } from './routes/play.colour'
 import { Route as PlayFindRouteImport } from './routes/play.find'
@@ -59,9 +61,19 @@ const CalmSlowRoute = CalmSlowRouteImport.update({
   path: '/calm/slow',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MemoriesIndexRoute = MemoriesIndexRouteImport.update({
+  id: '/memories/',
+  path: '/memories/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MemoriesNewRoute = MemoriesNewRouteImport.update({
   id: '/memories/new',
   path: '/memories/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoriesRediscoverRoute = MemoriesRediscoverRouteImport.update({
+  id: '/memories/rediscover',
+  path: '/memories/rediscover',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlayIndexRoute = PlayIndexRouteImport.update({
@@ -103,12 +115,14 @@ export interface FileRoutesByFullPath {
   '/calm/senses': typeof CalmSensesRoute
   '/calm/slow': typeof CalmSlowRoute
   '/memories/new': typeof MemoriesNewRoute
+  '/memories/rediscover': typeof MemoriesRediscoverRoute
   '/play/colour': typeof PlayColourRoute
   '/play/find': typeof PlayFindRoute
   '/play/match': typeof PlayMatchRoute
   '/play/maze': typeof PlayMazeRoute
   '/play/puzzle': typeof PlayPuzzleRoute
   '/calm/': typeof CalmIndexRoute
+  '/memories/': typeof MemoriesIndexRoute
   '/play/': typeof PlayIndexRoute
 }
 export interface FileRoutesByTo {
@@ -119,12 +133,14 @@ export interface FileRoutesByTo {
   '/calm/senses': typeof CalmSensesRoute
   '/calm/slow': typeof CalmSlowRoute
   '/memories/new': typeof MemoriesNewRoute
+  '/memories/rediscover': typeof MemoriesRediscoverRoute
   '/play/colour': typeof PlayColourRoute
   '/play/find': typeof PlayFindRoute
   '/play/match': typeof PlayMatchRoute
   '/play/maze': typeof PlayMazeRoute
   '/play/puzzle': typeof PlayPuzzleRoute
   '/calm': typeof CalmIndexRoute
+  '/memories': typeof MemoriesIndexRoute
   '/play': typeof PlayIndexRoute
 }
 export interface FileRoutesById {
@@ -136,12 +152,14 @@ export interface FileRoutesById {
   '/calm/senses': typeof CalmSensesRoute
   '/calm/slow': typeof CalmSlowRoute
   '/memories/new': typeof MemoriesNewRoute
+  '/memories/rediscover': typeof MemoriesRediscoverRoute
   '/play/colour': typeof PlayColourRoute
   '/play/find': typeof PlayFindRoute
   '/play/match': typeof PlayMatchRoute
   '/play/maze': typeof PlayMazeRoute
   '/play/puzzle': typeof PlayPuzzleRoute
   '/calm/': typeof CalmIndexRoute
+  '/memories/': typeof MemoriesIndexRoute
   '/play/': typeof PlayIndexRoute
 }
 export interface FileRouteTypes {
@@ -154,12 +172,14 @@ export interface FileRouteTypes {
     | '/calm/senses'
     | '/calm/slow'
     | '/memories/new'
+    | '/memories/rediscover'
     | '/play/colour'
     | '/play/find'
     | '/play/match'
     | '/play/maze'
     | '/play/puzzle'
     | '/calm/'
+    | '/memories/'
     | '/play/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -170,12 +190,14 @@ export interface FileRouteTypes {
     | '/calm/senses'
     | '/calm/slow'
     | '/memories/new'
+    | '/memories/rediscover'
     | '/play/colour'
     | '/play/find'
     | '/play/match'
     | '/play/maze'
     | '/play/puzzle'
     | '/calm'
+    | '/memories'
     | '/play'
   id:
     | '__root__'
@@ -186,12 +208,14 @@ export interface FileRouteTypes {
     | '/calm/senses'
     | '/calm/slow'
     | '/memories/new'
+    | '/memories/rediscover'
     | '/play/colour'
     | '/play/find'
     | '/play/match'
     | '/play/maze'
     | '/play/puzzle'
     | '/calm/'
+    | '/memories/'
     | '/play/'
   fileRoutesById: FileRoutesById
 }
@@ -203,12 +227,14 @@ export interface RootRouteChildren {
   CalmSensesRoute: typeof CalmSensesRoute
   CalmSlowRoute: typeof CalmSlowRoute
   MemoriesNewRoute: typeof MemoriesNewRoute
+  MemoriesRediscoverRoute: typeof MemoriesRediscoverRoute
   PlayColourRoute: typeof PlayColourRoute
   PlayFindRoute: typeof PlayFindRoute
   PlayMatchRoute: typeof PlayMatchRoute
   PlayMazeRoute: typeof PlayMazeRoute
   PlayPuzzleRoute: typeof PlayPuzzleRoute
   CalmIndexRoute: typeof CalmIndexRoute
+  MemoriesIndexRoute: typeof MemoriesIndexRoute
   PlayIndexRoute: typeof PlayIndexRoute
 }
 
@@ -263,11 +289,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CalmSlowRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/memories/': {
+      id: '/memories/'
+      path: '/memories'
+      fullPath: '/memories/'
+      preLoaderRoute: typeof MemoriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/memories/new': {
       id: '/memories/new'
       path: '/memories/new'
       fullPath: '/memories/new'
       preLoaderRoute: typeof MemoriesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memories/rediscover': {
+      id: '/memories/rediscover'
+      path: '/memories/rediscover'
+      fullPath: '/memories/rediscover'
+      preLoaderRoute: typeof MemoriesRediscoverRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/play/': {
@@ -323,12 +363,14 @@ const rootRouteChildren: RootRouteChildren = {
   CalmSensesRoute: CalmSensesRoute,
   CalmSlowRoute: CalmSlowRoute,
   MemoriesNewRoute: MemoriesNewRoute,
+  MemoriesRediscoverRoute: MemoriesRediscoverRoute,
   PlayColourRoute: PlayColourRoute,
   PlayFindRoute: PlayFindRoute,
   PlayMatchRoute: PlayMatchRoute,
   PlayMazeRoute: PlayMazeRoute,
   PlayPuzzleRoute: PlayPuzzleRoute,
   CalmIndexRoute: CalmIndexRoute,
+  MemoriesIndexRoute: MemoriesIndexRoute,
   PlayIndexRoute: PlayIndexRoute,
 }
 export const routeTree = rootRouteImport
