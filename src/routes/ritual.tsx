@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { PageHeader } from "@/components/AppShell";
 import { MemoryPhoto } from "@/components/MemoryPhoto";
@@ -24,8 +24,9 @@ export const Route = createFileRoute("/ritual")({
 
 function Bubbles({ onDone }: { onDone: () => void }) {
   const [popped, setPopped] = useState<number[]>([]);
-  const spots = useMemo(() => Array.from({ length: 7 }, (_, i) => ({ i, x: 10 + Math.random() * 80, y: 15 + Math.random() * 70, s: 40 + Math.random() * 30 })), []);
-  useEffect(() => { if (popped.length === spots.length) setTimeout(onDone, 400); }, [popped]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [spots, setSpots] = useState<{ i: number; x: number; y: number; s: number }[]>([]);
+  useEffect(() => setSpots(Array.from({ length: 7 }, (_, i) => ({ i, x: 10 + Math.random() * 80, y: 15 + Math.random() * 70, s: 40 + Math.random() * 30 }))), []);
+  useEffect(() => { if (spots.length && popped.length === spots.length) setTimeout(onDone, 400); }, [popped]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="relative h-64 overflow-hidden rounded-3xl bg-sage-soft">
       {spots.map((b) => (

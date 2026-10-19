@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
 import { Completion, PageHeader } from "@/components/AppShell";
 import { canMove, generateMaze } from "@/lib/maze";
@@ -30,7 +30,8 @@ function Maze() {
   const [level, setLevel] = useState(0);
   const [seed, setSeed] = useState(0);
   const size = levels[Math.min(level + (challenge ? 2 : 0), levels.length - 1)];
-  const grid = useMemo(() => generateMaze(size), [size, seed]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [grid, setGrid] = useState<ReturnType<typeof generateMaze> | null>(null);
+  useEffect(() => setGrid(generateMaze(size)), [size, seed]);
   const [pos, setPos] = useState<[number, number]>([0, 0]);
   const [trail, setTrail] = useState<string[]>(["0,0"]);
   const [done, setDone] = useState(false);
@@ -46,9 +47,9 @@ function Maze() {
 
   const move = useCallback(
     (d: Dir) => {
-      if (done) return;
+      if (done || !grid) return;
       setPos(([x, y]) => {
-        if (!canMove(grid, x, y, d)) {
+        if (!grid || !canMove(grid, x, y, d)) {
           setBump(true);
           setTimeout(() => setBump(false), 180);
           return [x, y];
@@ -91,6 +92,8 @@ function Maze() {
 
   const cell = 100 / size;
   const trailSet = new Set(trail);
+
+  if (!grid) return <PageHeader title="Happy Maze" subtitle="Drawing a little path…" back={{ to: "/play", label: "Games" }} />;
 
   if (done) {
     return (
