@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
+import type { Database } from "@/integrations/supabase/types";
 import { blobToDataUrl, compressImage, dataUrlToBlob } from "./image";
 import {
   defaultPrefs,
@@ -236,7 +237,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
 
   const updateMemory: AppData["updateMemory"] = async (id, patch) => {
     if (userId) {
-      const row: Record<string, unknown> = {};
+      const row: Database["public"]["Tables"]["memories"]["Update"] = {};
       if (patch.caption !== undefined) row.caption = patch.caption;
       if (patch.date !== undefined) row.memory_date = patch.date;
       if (patch.location !== undefined) row.location = patch.location;
