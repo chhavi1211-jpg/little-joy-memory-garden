@@ -10,6 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CalmIndexRouteImport } from './routes/calm.index'
+import { Route as CalmBoxRouteImport } from './routes/calm.box'
+import { Route as CalmQuickRouteImport } from './routes/calm.quick'
+import { Route as CalmRelaxRouteImport } from './routes/calm.relax'
+import { Route as CalmSensesRouteImport } from './routes/calm.senses'
+import { Route as CalmSlowRouteImport } from './routes/calm.slow'
 import { Route as PlayIndexRouteImport } from './routes/play.index'
 import { Route as PlayColourRouteImport } from './routes/play.colour'
 import { Route as PlayFindRouteImport } from './routes/play.find'
@@ -20,6 +26,36 @@ import { Route as PlayPuzzleRouteImport } from './routes/play.puzzle'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmIndexRoute = CalmIndexRouteImport.update({
+  id: '/calm/',
+  path: '/calm/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmBoxRoute = CalmBoxRouteImport.update({
+  id: '/calm/box',
+  path: '/calm/box',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmQuickRoute = CalmQuickRouteImport.update({
+  id: '/calm/quick',
+  path: '/calm/quick',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmRelaxRoute = CalmRelaxRouteImport.update({
+  id: '/calm/relax',
+  path: '/calm/relax',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmSensesRoute = CalmSensesRouteImport.update({
+  id: '/calm/senses',
+  path: '/calm/senses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmSlowRoute = CalmSlowRouteImport.update({
+  id: '/calm/slow',
+  path: '/calm/slow',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlayIndexRoute = PlayIndexRouteImport.update({
@@ -55,69 +91,111 @@ const PlayPuzzleRoute = PlayPuzzleRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/calm/box': typeof CalmBoxRoute
+  '/calm/quick': typeof CalmQuickRoute
+  '/calm/relax': typeof CalmRelaxRoute
+  '/calm/senses': typeof CalmSensesRoute
+  '/calm/slow': typeof CalmSlowRoute
   '/play/colour': typeof PlayColourRoute
   '/play/find': typeof PlayFindRoute
   '/play/match': typeof PlayMatchRoute
   '/play/maze': typeof PlayMazeRoute
   '/play/puzzle': typeof PlayPuzzleRoute
+  '/calm/': typeof CalmIndexRoute
   '/play/': typeof PlayIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/calm/box': typeof CalmBoxRoute
+  '/calm/quick': typeof CalmQuickRoute
+  '/calm/relax': typeof CalmRelaxRoute
+  '/calm/senses': typeof CalmSensesRoute
+  '/calm/slow': typeof CalmSlowRoute
   '/play/colour': typeof PlayColourRoute
   '/play/find': typeof PlayFindRoute
   '/play/match': typeof PlayMatchRoute
   '/play/maze': typeof PlayMazeRoute
   '/play/puzzle': typeof PlayPuzzleRoute
+  '/calm': typeof CalmIndexRoute
   '/play': typeof PlayIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/calm/box': typeof CalmBoxRoute
+  '/calm/quick': typeof CalmQuickRoute
+  '/calm/relax': typeof CalmRelaxRoute
+  '/calm/senses': typeof CalmSensesRoute
+  '/calm/slow': typeof CalmSlowRoute
   '/play/colour': typeof PlayColourRoute
   '/play/find': typeof PlayFindRoute
   '/play/match': typeof PlayMatchRoute
   '/play/maze': typeof PlayMazeRoute
   '/play/puzzle': typeof PlayPuzzleRoute
+  '/calm/': typeof CalmIndexRoute
   '/play/': typeof PlayIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/calm/box'
+    | '/calm/quick'
+    | '/calm/relax'
+    | '/calm/senses'
+    | '/calm/slow'
     | '/play/colour'
     | '/play/find'
     | '/play/match'
     | '/play/maze'
     | '/play/puzzle'
+    | '/calm/'
     | '/play/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/calm/box'
+    | '/calm/quick'
+    | '/calm/relax'
+    | '/calm/senses'
+    | '/calm/slow'
     | '/play/colour'
     | '/play/find'
     | '/play/match'
     | '/play/maze'
     | '/play/puzzle'
+    | '/calm'
     | '/play'
   id:
     | '__root__'
     | '/'
+    | '/calm/box'
+    | '/calm/quick'
+    | '/calm/relax'
+    | '/calm/senses'
+    | '/calm/slow'
     | '/play/colour'
     | '/play/find'
     | '/play/match'
     | '/play/maze'
     | '/play/puzzle'
+    | '/calm/'
     | '/play/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CalmBoxRoute: typeof CalmBoxRoute
+  CalmQuickRoute: typeof CalmQuickRoute
+  CalmRelaxRoute: typeof CalmRelaxRoute
+  CalmSensesRoute: typeof CalmSensesRoute
+  CalmSlowRoute: typeof CalmSlowRoute
   PlayColourRoute: typeof PlayColourRoute
   PlayFindRoute: typeof PlayFindRoute
   PlayMatchRoute: typeof PlayMatchRoute
   PlayMazeRoute: typeof PlayMazeRoute
   PlayPuzzleRoute: typeof PlayPuzzleRoute
+  CalmIndexRoute: typeof CalmIndexRoute
   PlayIndexRoute: typeof PlayIndexRoute
 }
 
@@ -128,6 +206,48 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/': {
+      id: '/calm/'
+      path: '/calm'
+      fullPath: '/calm/'
+      preLoaderRoute: typeof CalmIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/box': {
+      id: '/calm/box'
+      path: '/calm/box'
+      fullPath: '/calm/box'
+      preLoaderRoute: typeof CalmBoxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/quick': {
+      id: '/calm/quick'
+      path: '/calm/quick'
+      fullPath: '/calm/quick'
+      preLoaderRoute: typeof CalmQuickRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/relax': {
+      id: '/calm/relax'
+      path: '/calm/relax'
+      fullPath: '/calm/relax'
+      preLoaderRoute: typeof CalmRelaxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/senses': {
+      id: '/calm/senses'
+      path: '/calm/senses'
+      fullPath: '/calm/senses'
+      preLoaderRoute: typeof CalmSensesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calm/slow': {
+      id: '/calm/slow'
+      path: '/calm/slow'
+      fullPath: '/calm/slow'
+      preLoaderRoute: typeof CalmSlowRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/play/': {
@@ -177,11 +297,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CalmBoxRoute: CalmBoxRoute,
+  CalmQuickRoute: CalmQuickRoute,
+  CalmRelaxRoute: CalmRelaxRoute,
+  CalmSensesRoute: CalmSensesRoute,
+  CalmSlowRoute: CalmSlowRoute,
   PlayColourRoute: PlayColourRoute,
   PlayFindRoute: PlayFindRoute,
   PlayMatchRoute: PlayMatchRoute,
   PlayMazeRoute: PlayMazeRoute,
   PlayPuzzleRoute: PlayPuzzleRoute,
+  CalmIndexRoute: CalmIndexRoute,
   PlayIndexRoute: PlayIndexRoute,
 }
 export const routeTree = rootRouteImport
