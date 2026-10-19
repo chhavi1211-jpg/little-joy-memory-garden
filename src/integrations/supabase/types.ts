@@ -14,7 +14,138 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      collections: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      comfort_items: {
+        Row: {
+          created_at: string
+          id: string
+          kind: string
+          user_id: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          kind: string
+          user_id: string
+          value: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          kind?: string
+          user_id?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      memories: {
+        Row: {
+          archived: boolean
+          caption: string | null
+          collection_ids: string[]
+          created_at: string
+          feeling: string
+          id: string
+          location: string | null
+          memory_date: string
+          photo_path: string | null
+          source: string
+          tags: string[]
+          user_id: string
+        }
+        Insert: {
+          archived?: boolean
+          caption?: string | null
+          collection_ids?: string[]
+          created_at?: string
+          feeling?: string
+          id?: string
+          location?: string | null
+          memory_date?: string
+          photo_path?: string | null
+          source?: string
+          tags?: string[]
+          user_id: string
+        }
+        Update: {
+          archived?: boolean
+          caption?: string | null
+          collection_ids?: string[]
+          created_at?: string
+          feeling?: string
+          id?: string
+          location?: string | null
+          memory_date?: string
+          photo_path?: string | null
+          source?: string
+          tags?: string[]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      preferences: {
+        Row: {
+          data: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          data?: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          data?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      reflections: {
+        Row: {
+          created_at: string
+          good_thing: string | null
+          id: string
+          intention: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          good_thing?: string | null
+          id?: string
+          intention?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          good_thing?: string | null
+          id?: string
+          intention?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
