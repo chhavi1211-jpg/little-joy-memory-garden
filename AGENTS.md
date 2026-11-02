@@ -14,3 +14,4 @@
 - Memories carry a `source` field; future importers (e.g. Google Photos) must add rows via the same provider and require explicit user approval per photo. Why: keeps imports pluggable and consent-driven.
 - Photos live in the private `memories` bucket under `<user_id>/...`, shown via signed URLs; images are downscaled client-side (strips EXIF/GPS). Why: privacy by default.
 - Never surface archived or "avoid" memories anywhere (use `resurfaceable`). Why: core user trust rule.
+- Activity check-ins store the latest response per catalog slug in private preferences through the shared data provider; shared Completion resolves its activity from the catalog path. Why: guest/account storage, export and deletion stay consistent without tracking completion history.

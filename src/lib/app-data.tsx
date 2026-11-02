@@ -12,6 +12,7 @@ import {
   type NewMemoryInput,
   type Prefs,
   type Reflection,
+  type ActivityResponse,
 } from "./types";
 
 /**
@@ -79,6 +80,7 @@ interface AppData {
   removeComfort: (id: string) => Promise<void>;
   addReflection: (goodThing: string, intention: string) => Promise<void>;
   setPrefs: (patch: Partial<Prefs>) => void;
+  saveActivityFeedback: (slug: string, response: ActivityResponse) => Promise<void>;
   moveDeviceDataToAccount: () => Promise<number>;
   exportData: () => Promise<void>;
   deleteAllData: () => Promise<void>;
@@ -341,6 +343,24 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const saveActivityFeedback: AppData["saveActivityFeedback"] = async (slug, response) => {
+    const next: Prefs = {
+      ...prefs,
+      activityFeedback: { ...prefs.activityFeedback, [slug]: { response, updatedAt: new Date().toISOString() } },
+    };
+    if (userId) {
+      const { error } = await supabase.from("preferences").upsert({
+        user_id: userId, data: next as never, updated_at: new Date().toISOString(),
+      });
+      if (error) throw new Error("Your check-in wasn't saved. You can try again or skip it.");
+      // Cloud is authoritative for accounts; device storage failure must not undo a saved check-in.
+      try { writeLS(LS.prefs, next); } catch { /* Still saved privately in the account. */ }
+    } else {
+      writeLS(LS.prefs, next);
+    }
+    setPrefsState(next);
+  };
+
   const moveDeviceDataToAccount = async () => {
     if (!userId) return 0;
     const local = readLS<Memory[]>(LS.memories, []);
@@ -373,6 +393,14 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     }
     for (const k of readLS<ComfortItem[]>(LS.comfort, [])) {
       await supabase.from("comfort_items").insert({ user_id: userId, kind: k.kind, value: k.value });
+    }
+    const localFeedback = readLS<Partial<Prefs>>(LS.prefs, {}).activityFeedback ?? {};
+    const mergedFeedback = { ...localFeedback, ...prefs.activityFeedback };
+    if (Object.keys(mergedFeedback).length) {
+      const { error } = await supabase.from("preferences").upsert({
+        user_id: userId, data: { ...prefs, activityFeedback: mergedFeedback } as never, updated_at: new Date().toISOString(),
+      });
+      if (error) throw new Error("Your check-ins couldn't be moved yet. Please try again.");
     }
     [LS.memories, LS.collections, LS.comfort, LS.reflections].forEach((k) => localStorage.removeItem(k));
     setDeviceMemoryCount(0);
@@ -444,6 +472,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       removeComfort,
       addReflection,
       setPrefs,
+      saveActivityFeedback,
       moveDeviceDataToAccount,
       exportData,
       deleteAllData,

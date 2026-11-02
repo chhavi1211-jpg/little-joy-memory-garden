@@ -3,6 +3,9 @@ import type { ReactNode } from "react";
 import { Home, Puzzle, Images, Leaf, Settings, LifeBuoy } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAppData } from "@/lib/app-data";
+import { activityAtPath } from "@/lib/activity-feedback";
+import { ActivityCheckIn } from "@/components/ActivityCheckIn";
+import { Button } from "@/components/ui/button";
 
 const nav = [
   { to: "/", label: "Home", icon: Home },
@@ -100,15 +103,18 @@ export function PageHeader({ title, subtitle, back }: { title: string; subtitle?
 }
 
 export function Completion({ title, message, onAgain, againLabel = "Play again" }: { title: string; message: string; onAgain: () => void; againLabel?: string }) {
+  const path = useRouterState({ select: (s) => s.location.pathname });
+  const activity = activityAtPath(path);
   return (
-    <div role="status" className="animate-rise mx-auto max-w-md rounded-3xl bg-butter-soft p-8 text-center">
+    <div className="animate-rise mx-auto max-w-md rounded-3xl bg-butter-soft p-6 text-center sm:p-8">
       <div aria-hidden className="mx-auto mb-4 h-14 w-14 animate-float rounded-full bg-butter shadow-[0_0_0_10px_var(--color-butter-soft),0_0_0_18px_var(--color-peach-soft)]" />
       <h2 className="text-2xl">{title}</h2>
       <p className="mt-2 text-muted-foreground">{message}</p>
+      {activity && <ActivityCheckIn key={activity.slug} slug={activity.slug} />}
       <div className="mt-6 flex flex-wrap justify-center gap-3">
-        <button onClick={onAgain} className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground">
+        <Button onClick={onAgain} className="h-auto rounded-full px-5 py-2.5">
           {againLabel}
-        </button>
+        </Button>
         <Link to="/" className="rounded-full border border-border bg-card px-5 py-2.5 text-sm">
           Return home
         </Link>

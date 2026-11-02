@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/AppShell";
 import { exercises, exerciseBySlug } from "@/lib/catalog";
 import { useAppData } from "@/lib/app-data";
+import { HelpfulActivities } from "@/components/HelpfulActivities";
 
 export const Route = createFileRoute("/calm/")({
   head: () => ({
@@ -30,6 +31,7 @@ function Calm() {
         </span>
         <span aria-hidden className="text-3xl">→</span>
       </Link>
+      <HelpfulActivities kind="calm" />
       <div className="grid gap-4 sm:grid-cols-2">
         {exercises.map((e) => (
           <Link key={e.slug} to={e.to} className={`rounded-3xl ${e.tone} p-6`}>
