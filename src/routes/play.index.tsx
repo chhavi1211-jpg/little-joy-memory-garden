@@ -3,6 +3,7 @@ import { Heart } from "lucide-react";
 import { PageHeader } from "@/components/AppShell";
 import { games } from "@/lib/catalog";
 import { useAppData } from "@/lib/app-data";
+import { HelpfulActivities } from "@/components/HelpfulActivities";
 
 export const Route = createFileRoute("/play/")({
   head: () => ({
@@ -27,6 +28,7 @@ function Play() {
   return (
     <>
       <PageHeader title="Small games, small joys" subtitle="No timers, no lives, no pressure. Leave whenever you like." />
+      <HelpfulActivities kind="play" />
       <div className="grid gap-4 sm:grid-cols-2">
         {games.map((g) => {
           const fav = prefs.favouriteGames.includes(g.slug);

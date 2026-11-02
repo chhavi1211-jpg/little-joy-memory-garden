@@ -38,7 +38,14 @@ export interface Reflection {
 
 export type Mood = "anxious" | "tired" | "low" | "restless" | "okay" | "joy";
 
+export type ActivityResponse = "helped" | "a_little" | "not_this_time";
+export interface ActivityFeedback {
+  response: ActivityResponse;
+  updatedAt: string;
+}
+
 export interface Prefs {
+  activityFeedback: Record<string, ActivityFeedback>;
   theme: "light" | "dark";
   reduceMotion: boolean;
   sound: boolean;
@@ -52,6 +59,7 @@ export interface Prefs {
 }
 
 export const defaultPrefs: Prefs = {
+  activityFeedback: {},
   theme: "light",
   reduceMotion: false,
   sound: false,
